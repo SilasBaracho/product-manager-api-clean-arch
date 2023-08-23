@@ -18,6 +18,9 @@ data class ProductSchema(
     @Column(name = "id_product")
     val idProduct: UUID = UUID.randomUUID(),
 
+    @Column(name = "id_partner")
+    val idPartner: UUID,
+
     @Column(name = "name")
     val name: String,
 

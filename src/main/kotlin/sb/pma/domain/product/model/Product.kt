@@ -8,6 +8,7 @@ import java.util.UUID
 
 interface Product {
     val idProduct: UUID
+    val idPartner: UUID
     val name: String
     val description: String?
     val price: BigDecimal
