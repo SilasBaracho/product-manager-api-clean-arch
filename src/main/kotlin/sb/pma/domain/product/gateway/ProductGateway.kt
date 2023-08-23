@@ -11,5 +11,5 @@ interface ProductGateway {
 
     fun findById(id: UUID): Optional<Product>
 
-    fun findAll(): MutableList<Product>
+    fun findAllProductByIdPartner(idPartner: UUID): MutableList<Product>
 }

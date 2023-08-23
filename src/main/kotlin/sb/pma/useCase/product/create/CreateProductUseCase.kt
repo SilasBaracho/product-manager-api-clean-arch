@@ -20,6 +20,7 @@ class CreateProductUseCase(
 
         val product = productGateway.save(
             ProductImpl(
+                idPartner = payload.idPartner,
                 name = payload.name,
                 price = payload.price,
                 description = payload.description,

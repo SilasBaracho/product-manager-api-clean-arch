@@ -13,6 +13,7 @@ class ProductAdapterImpl(
 
     override fun toSchema(product: Product): ProductSchema {
         return ProductSchema(
+            idPartner = product.idPartner,
             idProduct = product.idProduct,
             name = product.name,
             description = product.description,
@@ -27,6 +28,7 @@ class ProductAdapterImpl(
 
     override fun toDomain(productSchema: ProductSchema): Product {
         return ProductImpl(
+            idPartner = productSchema.idPartner,
             idProduct = productSchema.idProduct,
             name = productSchema.name,
             description = productSchema.description,

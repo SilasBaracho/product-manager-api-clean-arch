@@ -23,7 +23,7 @@ class ProductDatabaseGateway(
     }
 
     override fun delete(product: Product) {
-        val productSchema = productRepository.findById(product.idProduct)
+        val productSchema = productRepository.findByIdProductAndIdPartner(product.idProduct, product.idPartner)
             .orElseThrow { NoSuchElementException("Product not found with id ${product.idProduct}") }
 
         return productRepository.delete(productSchema)
@@ -40,8 +40,8 @@ class ProductDatabaseGateway(
         }
     }
 
-    override fun findAll(): MutableList<Product> {
-        val products = productRepository.findAll()
+    override fun findAllProductByIdPartner(idPartner: UUID): MutableList<Product> {
+        val products = productRepository.findAllByIdPartner(idPartner)
         return products.map { product -> productAdapter.toDomain(product) }.toMutableList()
     }
 

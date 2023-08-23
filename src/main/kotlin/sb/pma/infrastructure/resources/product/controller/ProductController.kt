@@ -13,7 +13,7 @@ import sb.pma.useCase.product.create.CreateProductInput
 import sb.pma.useCase.product.create.CreateProductUseCase
 import sb.pma.useCase.product.delete.DeleteProductInput
 import sb.pma.useCase.product.delete.DeleteProductUseCase
-import sb.pma.useCase.product.findAll.FindAllProductUseCase
+import sb.pma.useCase.product.findAll.FindAllProductByIdPartnerUseCase
 import sb.pma.useCase.product.findById.FindProductByIdInput
 import sb.pma.useCase.product.findById.FindProductByIdUseCase
 import java.util.UUID
@@ -24,7 +24,7 @@ class ProductController(
     val createProductUseCase: CreateProductUseCase,
     val deleteProductUseCase: DeleteProductUseCase,
     val findProductByIdUseCase: FindProductByIdUseCase,
-    val findAllProductUseCase: FindAllProductUseCase
+    val findAllProductByIdPartnerUseCase: FindAllProductByIdPartnerUseCase
 ) {
 
     @PostMapping
@@ -44,8 +44,8 @@ class ProductController(
         return findProductByIdUseCase.invoke(payload)
     }
 
-    @GetMapping("/find-all")
-    fun findAll(): List<ProductOutput> {
-        return findAllProductUseCase.invoke()
+    @GetMapping("/find-all/{id_partner}")
+    fun findAllProductByIdPartner(@PathVariable("id_partner") idPartner: UUID): List<ProductOutput> {
+        return findAllProductByIdPartnerUseCase.invoke(idPartner)
     }
 }
