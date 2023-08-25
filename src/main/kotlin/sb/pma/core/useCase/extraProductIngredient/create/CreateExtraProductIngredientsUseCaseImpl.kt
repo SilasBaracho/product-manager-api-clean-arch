@@ -1,6 +1,7 @@
 package sb.pma.core.useCase.extraProductIngredient.create
 
 import sb.pma.core.domain.extraProductIngredient.gateway.ExtraProductIngredientGateway
+import sb.pma.core.domain.extraProductIngredient.output.ExtraProductIngredientsOutput
 import sb.pma.core.domain.extraProductIngredient.useCase.CreateExtraProductIngredientsUseCase
 import sb.pma.core.domain.extraProductIngredient.output.ExtraProductIngredientsOutputImpl
 import sb.pma.core.domain.product.gateway.ProductGateway
@@ -12,7 +13,7 @@ class CreateExtraProductIngredientsUseCaseImpl(
     private val productGateway: ProductGateway,
 ): CreateExtraProductIngredientsUseCase {
 
-    override operator fun invoke(payload: CreateExtraProductIngredientsInput, idProduct: UUID): sb.pma.core.domain.extraProductIngredient.output.ExtraProductIngredientsOutput {
+    override operator fun invoke(payload: CreateExtraProductIngredientsInput, idProduct: UUID): ExtraProductIngredientsOutput {
         val product = productGateway.findById(idProduct).orElseThrow { NotFoundException("Product not found") }
 
         val extraProductIngredients = extraProductIngredientGateway.createProductIngredientsSet(payload, product)
