@@ -1,12 +1,12 @@
 package sb.pma.infrastructure.resources.productCategory.gateway
 
 import org.springframework.stereotype.Component
-import sb.pma.domain.productCategory.gateway.ProductCategoryGateway
-import sb.pma.domain.productCategory.model.ProductCategory
-import sb.pma.domain.productCategory.model.ProductCategoryImpl
+import sb.pma.core.domain.productCategory.gateway.ProductCategoryGateway
+import sb.pma.core.domain.productCategory.model.ProductCategory
+import sb.pma.core.domain.productCategory.model.ProductCategoryImpl
 import sb.pma.infrastructure.config.db.repository.ProductCategoryRepository
 import sb.pma.infrastructure.resources.productCategory.adapter.ProductCategoryAdapter
-import sb.pma.useCase.productCategory.findByName.FindProductCategoryByNameInput
+import sb.pma.core.useCase.productCategory.findByName.FindProductCategoryByNameInput
 import java.time.LocalDateTime
 import java.util.Optional
 

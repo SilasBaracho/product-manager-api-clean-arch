@@ -1,6 +1,6 @@
 package sb.pma.infrastructure.resources.product.adapter
 
-import sb.pma.domain.product.model.Product
+import sb.pma.core.domain.product.model.Product
 import sb.pma.infrastructure.config.db.schema.ProductSchema
 
 interface ProductAdapter {

@@ -1,8 +1,8 @@
 package sb.pma.infrastructure.resources.ingredient.adapter
 
 import org.springframework.stereotype.Component
-import sb.pma.domain.ingredient.model.Ingredient
-import sb.pma.domain.ingredient.model.IngredientImpl
+import sb.pma.core.domain.ingredient.model.Ingredient
+import sb.pma.core.domain.ingredient.model.IngredientImpl
 import sb.pma.infrastructure.config.db.schema.IngredientSchema
 
 @Component

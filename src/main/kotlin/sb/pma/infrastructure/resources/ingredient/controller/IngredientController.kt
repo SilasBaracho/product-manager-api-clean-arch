@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import sb.pma.infrastructure.utils.ConstantsUtils.ConstantConfig.INGREDIENT_URI_RESOURCE_V1
-import sb.pma.useCase.ingredient.IngredientOutput
-import sb.pma.useCase.ingredient.create.CreateIngredientInput
-import sb.pma.useCase.ingredient.create.CreateIngredientUseCase
-import sb.pma.useCase.ingredient.delete.DeleteIngredientInput
-import sb.pma.useCase.ingredient.delete.DeleteIngredientUseCase
-import sb.pma.useCase.ingredient.findAll.FindAllIngredientUseCase
-import sb.pma.useCase.ingredient.findById.FindIngredientByIdInput
-import sb.pma.useCase.ingredient.findById.FindIngredientByIdUseCase
-import sb.pma.useCase.ingredient.findByName.FindIngredientByNameInput
-import sb.pma.useCase.ingredient.findByName.FindIngredientByNameUseCase
+import sb.pma.core.domain.ingredient.output.IngredientOutput
+import sb.pma.core.domain.ingredient.useCase.CreateIngredientUseCase
+import sb.pma.core.domain.ingredient.useCase.DeleteIngredientUseCase
+import sb.pma.core.domain.ingredient.useCase.FindAllIngredientUseCase
+import sb.pma.core.domain.ingredient.useCase.FindIngredientByIdUseCase
+import sb.pma.core.domain.ingredient.useCase.FindIngredientByNameUseCase
+import sb.pma.core.useCase.ingredient.create.CreateIngredientInput
+import sb.pma.core.useCase.ingredient.delete.DeleteIngredientInput
+import sb.pma.core.useCase.ingredient.findById.FindIngredientByIdInput
+import sb.pma.core.useCase.ingredient.findByName.FindIngredientByNameInput
 
 @RestController
 @RequestMapping(INGREDIENT_URI_RESOURCE_V1)

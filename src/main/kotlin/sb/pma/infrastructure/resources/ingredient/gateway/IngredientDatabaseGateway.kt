@@ -1,9 +1,9 @@
 package sb.pma.infrastructure.resources.ingredient.gateway
 
 import org.springframework.stereotype.Component
-import sb.pma.domain.ingredient.gateway.IngredientGateway
-import sb.pma.domain.ingredient.model.Ingredient
-import sb.pma.domain.ingredient.model.IngredientImpl
+import sb.pma.core.domain.ingredient.gateway.IngredientGateway
+import sb.pma.core.domain.ingredient.model.Ingredient
+import sb.pma.core.domain.ingredient.model.IngredientImpl
 import sb.pma.infrastructure.config.db.repository.IngredientRepository
 import sb.pma.infrastructure.resources.ingredient.adapter.IngredientAdapter
 import java.time.LocalDateTime
@@ -13,7 +13,7 @@ import java.util.Optional
 class IngredientDatabaseGateway(
     private val ingredientAdapter: IngredientAdapter,
     private val ingredientRepository: IngredientRepository
-): IngredientGateway{
+): IngredientGateway {
 
     override fun save(ingredient: Ingredient): Ingredient {
         return ingredientRepository.save(

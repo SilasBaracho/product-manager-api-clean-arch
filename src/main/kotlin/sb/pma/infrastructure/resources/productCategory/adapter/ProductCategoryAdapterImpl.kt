@@ -1,8 +1,8 @@
 package sb.pma.infrastructure.resources.productCategory.adapter
 
 import org.springframework.stereotype.Component
-import sb.pma.domain.productCategory.model.ProductCategory
-import sb.pma.domain.productCategory.model.ProductCategoryImpl
+import sb.pma.core.domain.productCategory.model.ProductCategory
+import sb.pma.core.domain.productCategory.model.ProductCategoryImpl
 import sb.pma.infrastructure.config.db.schema.ProductCategorySchema
 
 @Component

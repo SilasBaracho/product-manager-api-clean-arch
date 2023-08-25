@@ -3,8 +3,8 @@ package sb.pma.infrastructure.resources.extraProductIngredient.adapter
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Lazy
 import org.springframework.stereotype.Component
-import sb.pma.domain.extraProductIngredient.model.ExtraProductIngredient
-import sb.pma.domain.extraProductIngredient.model.ExtraProductIngredientImpl
+import sb.pma.core.domain.extraProductIngredient.model.ExtraProductIngredient
+import sb.pma.core.domain.extraProductIngredient.model.ExtraProductIngredientImpl
 import sb.pma.infrastructure.config.db.schema.ExtraProductIngredientSchema
 import sb.pma.infrastructure.resources.ingredient.adapter.IngredientAdapter
 import sb.pma.infrastructure.resources.product.adapter.ProductAdapter

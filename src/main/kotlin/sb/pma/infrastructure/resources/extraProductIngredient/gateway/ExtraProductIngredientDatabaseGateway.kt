@@ -2,15 +2,15 @@ package sb.pma.infrastructure.resources.extraProductIngredient.gateway
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
-import sb.pma.domain.extraProductIngredient.gateway.ExtraProductIngredientGateway
-import sb.pma.domain.extraProductIngredient.model.ExtraProductIngredient
-import sb.pma.domain.extraProductIngredient.model.ExtraProductIngredientImpl
-import sb.pma.domain.ingredient.gateway.IngredientGateway
-import sb.pma.domain.product.model.Product
+import sb.pma.core.domain.extraProductIngredient.gateway.ExtraProductIngredientGateway
+import sb.pma.core.domain.extraProductIngredient.model.ExtraProductIngredient
+import sb.pma.core.domain.extraProductIngredient.model.ExtraProductIngredientImpl
+import sb.pma.core.domain.ingredient.gateway.IngredientGateway
+import sb.pma.core.useCase.extraProductIngredient.create.CreateExtraProductIngredientsInput
+import sb.pma.core.domain.product.model.Product
 import sb.pma.infrastructure.config.db.repository.ExtraProductIngredientRepository
 import sb.pma.infrastructure.resources.extraProductIngredient.adapter.ExtraProductIngredientAdapter
 import sb.pma.infrastructure.resources.product.adapter.ProductAdapter
-import sb.pma.useCase.extraProductIngredients.create.CreateExtraProductIngredientsInput
 
 @Component
 class ExtraProductIngredientDatabaseGateway(

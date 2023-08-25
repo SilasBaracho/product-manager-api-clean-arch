@@ -1,8 +1,8 @@
 package sb.pma.infrastructure.resources.product.gateway
 
 import org.springframework.stereotype.Component
-import sb.pma.domain.product.gateway.ProductGateway
-import sb.pma.domain.product.model.Product
+import sb.pma.core.domain.product.gateway.ProductGateway
+import sb.pma.core.domain.product.model.Product
 import sb.pma.infrastructure.config.db.repository.ProductRepository
 import sb.pma.infrastructure.resources.product.adapter.ProductAdapter
 import java.util.Optional

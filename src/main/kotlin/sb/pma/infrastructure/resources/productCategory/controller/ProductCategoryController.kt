@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import sb.pma.infrastructure.utils.ConstantsUtils.ConstantConfig.PRODUCT_CATEGORY_URI_RESOURCE_V1
-import sb.pma.useCase.productCategory.ProductCategoryOutput
-import sb.pma.useCase.productCategory.create.CreateProductCategoryInput
-import sb.pma.useCase.productCategory.create.CreateProductCategoryUseCase
-import sb.pma.useCase.productCategory.delete.DeleteProductCategoryInput
-import sb.pma.useCase.productCategory.delete.DeleteProductCategoryUseCase
-import sb.pma.useCase.productCategory.findAll.FindAllProductCategoryUseCase
-import sb.pma.useCase.productCategory.findById.FindProductCategoryByIdInput
-import sb.pma.useCase.productCategory.findById.FindProductCategoryByIdUseCase
-import sb.pma.useCase.productCategory.findByName.FindProductCategoryByNameInput
-import sb.pma.useCase.productCategory.findByName.FindProductCategoryByNameUseCase
+import sb.pma.core.domain.productCategory.output.ProductCategoryOutput
+import sb.pma.core.domain.productCategory.useCase.CreateProductCategoryUseCase
+import sb.pma.core.domain.productCategory.useCase.DeleteProductCategoryUseCase
+import sb.pma.core.domain.productCategory.useCase.FindAllProductCategoryUseCase
+import sb.pma.core.domain.productCategory.useCase.FindProductCategoryByIdUseCase
+import sb.pma.core.domain.productCategory.useCase.FindProductCategoryByNameUseCase
+import sb.pma.core.useCase.productCategory.create.CreateProductCategoryInput
+import sb.pma.core.useCase.productCategory.delete.DeleteProductCategoryInput
+import sb.pma.core.useCase.productCategory.findById.FindProductCategoryByIdInput
+import sb.pma.core.useCase.productCategory.findByName.FindProductCategoryByNameInput
 
 @RestController
 @RequestMapping(PRODUCT_CATEGORY_URI_RESOURCE_V1)

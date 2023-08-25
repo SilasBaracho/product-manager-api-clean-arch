@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import sb.pma.infrastructure.utils.ConstantsUtils.ConstantConfig.PRODUCT_URI_RESOURCE_V1
-import sb.pma.useCase.product.ProductOutput
-import sb.pma.useCase.product.create.CreateProductInput
-import sb.pma.useCase.product.create.CreateProductUseCase
-import sb.pma.useCase.product.delete.DeleteProductInput
-import sb.pma.useCase.product.delete.DeleteProductUseCase
-import sb.pma.useCase.product.findAll.FindAllProductByIdPartnerUseCase
-import sb.pma.useCase.product.findById.FindProductByIdInput
-import sb.pma.useCase.product.findById.FindProductByIdUseCase
+import sb.pma.core.domain.product.output.ProductOutput
+import sb.pma.core.domain.product.useCase.CreateProductUseCase
+import sb.pma.core.domain.product.useCase.DeleteProductUseCase
+import sb.pma.core.domain.product.useCase.FindAllProductByIdPartnerUseCase
+import sb.pma.core.domain.product.useCase.FindProductByIdUseCase
+import sb.pma.core.useCase.product.create.CreateProductInput
+import sb.pma.core.useCase.product.delete.DeleteProductInput
+import sb.pma.core.useCase.product.findById.FindProductByIdInput
 import java.util.UUID
 
 @RestController

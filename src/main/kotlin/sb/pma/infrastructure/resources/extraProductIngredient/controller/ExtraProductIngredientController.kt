@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import sb.pma.core.domain.extraProductIngredient.output.ExtraProductIngredientsOutput
+import sb.pma.core.domain.extraProductIngredient.useCase.CreateExtraProductIngredientsUseCase
+import sb.pma.core.domain.extraProductIngredient.useCase.DeleteExtraIngredientsByProductUseCase
+import sb.pma.core.domain.extraProductIngredient.useCase.FindExtraIngredientsByProductUseCase
+import sb.pma.core.useCase.extraProductIngredient.create.CreateExtraProductIngredientsInput
+import sb.pma.core.useCase.extraProductIngredient.delete.DeleteExtraIngredientsByProductInput
+import sb.pma.core.useCase.extraProductIngredient.findByIdProduct.FindExtraIngredientsByProductInput
 import sb.pma.infrastructure.utils.ConstantsUtils.ConstantConfig.EXTRA_PRODUCT_INGREDIENTS_URI_RESOURCE_V1
-import sb.pma.useCase.extraProductIngredients.ExtraProductIngredientsOutput
-import sb.pma.useCase.extraProductIngredients.create.CreateExtraProductIngredientsInput
-import sb.pma.useCase.extraProductIngredients.create.CreateExtraProductIngredientsUseCase
-import sb.pma.useCase.extraProductIngredients.delete.DeleteExtraIngredientsByProductInput
-import sb.pma.useCase.extraProductIngredients.delete.DeleteExtraProductIngredientsUseCase
-import sb.pma.useCase.extraProductIngredients.findById.FindExtraIngredientsByProductInput
-import sb.pma.useCase.extraProductIngredients.findById.FindExtraIngredientsByProductUseCase
-import sb.pma.useCase.product.delete.DeleteProductInput
+import sb.pma.core.useCase.product.delete.DeleteProductInput
 import java.util.UUID
 
 @RestController
 @RequestMapping(EXTRA_PRODUCT_INGREDIENTS_URI_RESOURCE_V1)
 class ExtraProductIngredientController(
     val createExtraProductIngredientsUseCase: CreateExtraProductIngredientsUseCase,
-    val deleteExtraProductIngredientsUseCase: DeleteExtraProductIngredientsUseCase,
+    val deleteExtraIngredientsByProductUseCase: DeleteExtraIngredientsByProductUseCase,
     val findExtraIngredientsByProductUseCase: FindExtraIngredientsByProductUseCase
 ) {
 
@@ -42,6 +42,6 @@ class ExtraProductIngredientController(
     @DeleteMapping("/{id_product}")
     fun delete(@PathVariable("id_product") idProduct: UUID){
         val payload = DeleteProductInput(idProduct)
-        deleteExtraProductIngredientsUseCase.invoke(DeleteExtraIngredientsByProductInput(idProduct))
+        deleteExtraIngredientsByProductUseCase.invoke(DeleteExtraIngredientsByProductInput(idProduct))
     }
 }
