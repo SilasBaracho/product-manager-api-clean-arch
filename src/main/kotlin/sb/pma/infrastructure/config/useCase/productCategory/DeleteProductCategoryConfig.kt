@@ -4,15 +4,20 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import sb.pma.core.domain.productCategory.useCase.DeleteProductCategoryUseCase
 import sb.pma.core.useCase.productCategory.delete.DeleteProductCategoryUseCaseImpl
-import sb.pma.infrastructure.resources.productCategory.gateway.ProductCategoryDatabaseGateway
+import sb.pma.infrastructure.resources.productCategory.gateway.DeleteProductCategoryGatewayImpl
+import sb.pma.infrastructure.resources.productCategory.gateway.FindByIdProductCategoryGatewayImpl
 
 @Configuration
 class DeleteProductCategoryConfig {
 
     @Bean
     fun deleteProductCategoryUseCase(
-        productCategoryDatabaseGateway: ProductCategoryDatabaseGateway
+        deleteProductCategoryGateway: DeleteProductCategoryGatewayImpl,
+        findByIdProductCategoryGateway: FindByIdProductCategoryGatewayImpl
     ): DeleteProductCategoryUseCase {
-        return DeleteProductCategoryUseCaseImpl(productCategoryDatabaseGateway)
+        return DeleteProductCategoryUseCaseImpl(
+            deleteProductCategoryGateway,
+            findByIdProductCategoryGateway
+        )
     }
 }

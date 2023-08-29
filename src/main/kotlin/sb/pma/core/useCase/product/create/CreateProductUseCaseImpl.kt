@@ -1,24 +1,26 @@
 package sb.pma.core.useCase.product.create
 
-import sb.pma.core.domain.extraProductIngredient.gateway.ExtraProductIngredientGateway
+import sb.pma.core.domain.extraProductIngredient.gateway.CreateProductIngredientGateway
+import sb.pma.core.domain.extraProductIngredient.gateway.SaveExtraProductIngredientGateway
 import sb.pma.core.domain.extraProductIngredient.model.ExtraProductIngredient
-import sb.pma.core.domain.product.gateway.ProductGateway
+import sb.pma.core.domain.product.gateway.SaveProductGateway
 import sb.pma.core.domain.product.model.ProductImpl
-import sb.pma.core.domain.productCategory.gateway.ProductCategoryGateway
 import sb.pma.core.domain.product.output.ProductOutput
 import sb.pma.core.domain.product.output.ProductOutputImpl
 import sb.pma.core.domain.product.useCase.CreateProductUseCase
+import sb.pma.core.domain.productCategory.gateway.FindOrCreateProductCategoryGateway
 
 class CreateProductUseCaseImpl(
-    private val productGateway: ProductGateway,
-    private val productCategoryGateway: ProductCategoryGateway,
-    private val extraProductIngredientGateway: ExtraProductIngredientGateway
+    private val createProductIngredientGateway: CreateProductIngredientGateway,
+    private val findOrCreateProductCategoryGateway: FindOrCreateProductCategoryGateway,
+    private val saveProductGateway: SaveProductGateway,
+    private val saveExtraProductIngredientGateway: SaveExtraProductIngredientGateway,
 ): CreateProductUseCase {
 
     override operator fun invoke(payload: CreateProductInput): ProductOutput {
-        val productCategory = productCategoryGateway.findOrCreateProductCategory(payload.productCategory)
+        val productCategory = findOrCreateProductCategoryGateway.execute(payload.productCategory)
 
-        val product = productGateway.save(
+        val product = saveProductGateway.execute(
             ProductImpl(
                 idPartner = payload.idPartner,
                 name = payload.name,
@@ -35,7 +37,7 @@ class CreateProductUseCaseImpl(
         }.let {
             payload.extraProductIngredients?.map {
                 val extraProductIngredientSaved = saveExtraProductIngredient(
-                    extraProductIngredientGateway.createProductIngredientsSet(it, product)
+                    createProductIngredientGateway.execute(it, product)
                 )
 
                 extraProductIngredients.add(extraProductIngredientSaved)
@@ -45,9 +47,9 @@ class CreateProductUseCaseImpl(
         return ProductOutputImpl(product, extraProductIngredients)
     }
 
-    fun saveExtraProductIngredient(extraProductIngredients: ExtraProductIngredient): ExtraProductIngredient {
+    private fun saveExtraProductIngredient(extraProductIngredients: ExtraProductIngredient): ExtraProductIngredient {
         extraProductIngredients.let {
-           return extraProductIngredientGateway.save(it)
+           return saveExtraProductIngredientGateway.execute(it)
         }
     }
 

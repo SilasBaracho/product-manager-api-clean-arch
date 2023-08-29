@@ -4,15 +4,17 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import sb.pma.core.domain.productCategory.useCase.FindAllProductCategoryUseCase
 import sb.pma.core.useCase.productCategory.findAll.FindAllProductCategoryUseCaseImpl
-import sb.pma.infrastructure.resources.productCategory.gateway.ProductCategoryDatabaseGateway
+import sb.pma.infrastructure.resources.productCategory.gateway.FindAllProductCategoryGatewayImpl
 
 @Configuration
 class FindAllProductCategoryConfig {
 
     @Bean
     fun findAllProductCategoryUseCase(
-        productCategoryDatabaseGateway: ProductCategoryDatabaseGateway
+        findAllProductCategoryGateway: FindAllProductCategoryGatewayImpl
     ): FindAllProductCategoryUseCase {
-        return FindAllProductCategoryUseCaseImpl(productCategoryDatabaseGateway)
+        return FindAllProductCategoryUseCaseImpl(
+            findAllProductCategoryGateway
+        )
     }
 }

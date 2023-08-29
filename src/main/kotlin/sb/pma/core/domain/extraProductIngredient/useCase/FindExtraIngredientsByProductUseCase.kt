@@ -4,6 +4,6 @@ import sb.pma.core.useCase.extraProductIngredient.findByIdProduct.FindExtraIngre
 import sb.pma.core.domain.extraProductIngredient.output.ExtraProductIngredientsOutput
 
 interface FindExtraIngredientsByProductUseCase {
-    operator fun invoke(input: FindExtraIngredientsByProductInput): List<ExtraProductIngredientsOutput>
 
+    operator fun invoke(input: FindExtraIngredientsByProductInput): List<ExtraProductIngredientsOutput>
 }

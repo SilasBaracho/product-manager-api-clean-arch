@@ -7,6 +7,7 @@ import sb.pma.infrastructure.config.db.schema.IngredientSchema
 
 @Component
 class IngredientAdapterImpl: IngredientAdapter {
+
     override fun toSchema(ingredient: Ingredient): IngredientSchema {
         return IngredientSchema(
             id = ingredient.id,

@@ -4,17 +4,23 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import sb.pma.core.domain.extraProductIngredient.useCase.DeleteExtraIngredientsByProductUseCase
 import sb.pma.core.useCase.extraProductIngredient.delete.DeleteExtraIngredientsByProductUseCaseImpl
-import sb.pma.infrastructure.resources.extraProductIngredient.gateway.ExtraProductIngredientDatabaseGateway
-import sb.pma.infrastructure.resources.product.gateway.ProductDatabaseGateway
+import sb.pma.infrastructure.resources.extraProductIngredient.gateway.DeleteExtraProductIngredientGatewayImpl
+import sb.pma.infrastructure.resources.extraProductIngredient.gateway.FindExtraProductIngredientsGatewayImpl
+import sb.pma.infrastructure.resources.product.gateway.FindProductByIdGatewayImpl
 
 @Configuration
 class DeleteExtraIngredientsByProductConfig {
 
     @Bean
     fun deleteExtraIngredientsByProductUseCase(
-        extraProductIngredientGateway: ExtraProductIngredientDatabaseGateway,
-        productGateway: ProductDatabaseGateway
+        findExtraIngredientsByProductGateway: FindExtraProductIngredientsGatewayImpl,
+        findProductByIdGateway: FindProductByIdGatewayImpl,
+        deleteExtraProductIngredientGateway: DeleteExtraProductIngredientGatewayImpl
     ): DeleteExtraIngredientsByProductUseCase {
-        return DeleteExtraIngredientsByProductUseCaseImpl(extraProductIngredientGateway, productGateway)
+        return DeleteExtraIngredientsByProductUseCaseImpl(
+            findExtraIngredientsByProductGateway,
+            findProductByIdGateway,
+            deleteExtraProductIngredientGateway
+        )
     }
 }

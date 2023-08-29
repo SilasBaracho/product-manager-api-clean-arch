@@ -5,5 +5,6 @@ import sb.pma.core.useCase.extraProductIngredient.create.CreateExtraProductIngre
 import java.util.UUID
 
 interface CreateExtraProductIngredientsUseCase {
+
     operator fun invoke(payload: CreateExtraProductIngredientsInput, idProduct: UUID): ExtraProductIngredientsOutput
 }

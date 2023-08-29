@@ -1,20 +1,20 @@
 package sb.pma.core.useCase.product.findAll
 
-import sb.pma.core.domain.extraProductIngredient.gateway.ExtraProductIngredientGateway
-import sb.pma.core.domain.product.gateway.ProductGateway
+import sb.pma.core.domain.extraProductIngredient.gateway.FindExtraIngredientsByProductGateway
 import sb.pma.core.domain.product.output.ProductOutput
 import sb.pma.core.domain.product.output.ProductOutputImpl
 import sb.pma.core.domain.product.useCase.FindAllProductByIdPartnerUseCase
+import sb.pma.infrastructure.resources.product.gateway.FindAllProductByIdPartnerGatewayImpl
 import java.util.UUID
 
 class FindAllProductByIdPartnerUseCaseImpl(
-    val extraProductIngredientGateway: ExtraProductIngredientGateway,
-    val productGateway: ProductGateway,
+    private val findAllProductByIdPartnerGateway: FindAllProductByIdPartnerGatewayImpl,
+    private val findExtraIngredientsByProductGateway: FindExtraIngredientsByProductGateway
 ): FindAllProductByIdPartnerUseCase {
 
     override operator fun invoke(idPartner: UUID): List<ProductOutput> {
-        return productGateway.findAllProductByIdPartner(idPartner).map {
-            ProductOutputImpl(it, extraProductIngredientGateway.findIngredientsByProduct(it))
+        return findAllProductByIdPartnerGateway.execute(idPartner).map {
+            ProductOutputImpl(it, findExtraIngredientsByProductGateway.execute(it))
         }
     }
 }

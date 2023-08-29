@@ -4,13 +4,17 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import sb.pma.core.domain.ingredient.useCase.FindAllIngredientUseCase
 import sb.pma.core.useCase.ingredient.findAll.FindAllIngredientUseCaseImpl
-import sb.pma.infrastructure.resources.ingredient.gateway.IngredientDatabaseGateway
+import sb.pma.infrastructure.resources.ingredient.gateway.FindAllIngredientGatewayImpl
 
 @Configuration
 class FindAllIngredientConfig {
 
     @Bean
-    fun findAllIngredientUseCase(ingredientGateway: IngredientDatabaseGateway): FindAllIngredientUseCase {
-        return FindAllIngredientUseCaseImpl(ingredientGateway)
+    fun findAllIngredientUseCase(
+        findAllIngredientGateway: FindAllIngredientGatewayImpl
+    ): FindAllIngredientUseCase {
+        return FindAllIngredientUseCaseImpl(
+            findAllIngredientGateway
+        )
     }
 }

@@ -4,6 +4,7 @@ import sb.pma.core.domain.ingredient.model.Ingredient
 import sb.pma.infrastructure.config.db.schema.IngredientSchema
 
 interface IngredientAdapter {
+
     fun toSchema(ingredient: Ingredient): IngredientSchema
 
     fun toDomain(ingredientSchema: IngredientSchema): Ingredient

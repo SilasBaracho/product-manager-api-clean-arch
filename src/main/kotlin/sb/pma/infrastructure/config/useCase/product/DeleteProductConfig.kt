@@ -2,23 +2,28 @@ package sb.pma.infrastructure.config.useCase.product
 
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import sb.pma.core.domain.product.useCase.CreateProductUseCase
+import sb.pma.core.domain.product.gateway.FindProductByIdGateway
 import sb.pma.core.domain.product.useCase.DeleteProductUseCase
-import sb.pma.core.useCase.product.create.CreateProductUseCaseImpl
 import sb.pma.core.useCase.product.delete.DeleteProductUseCaseImpl
-import sb.pma.infrastructure.resources.extraProductIngredient.gateway.ExtraProductIngredientDatabaseGateway
-import sb.pma.infrastructure.resources.product.gateway.ProductDatabaseGateway
-import sb.pma.infrastructure.resources.productCategory.gateway.ProductCategoryDatabaseGateway
+import sb.pma.infrastructure.resources.extraProductIngredient.gateway.DeleteExtraProductIngredientGatewayImpl
+import sb.pma.infrastructure.resources.extraProductIngredient.gateway.FindExtraProductIngredientsGatewayImpl
+import sb.pma.infrastructure.resources.product.gateway.DeleteProductGatewayImpl
 
 @Configuration
 class DeleteProductConfig {
 
     @Bean
     fun deleteProductUseCase(
-        extraProductIngredientGateway: ExtraProductIngredientDatabaseGateway,
-        productGateway: ProductDatabaseGateway
-
+        deleteProductGateway: DeleteProductGatewayImpl,
+        deleteExtraProductIngredientGateway: DeleteExtraProductIngredientGatewayImpl,
+        findExtraIngredientsByProductGateway: FindExtraProductIngredientsGatewayImpl,
+        findProductByIdGateway: FindProductByIdGateway,
     ): DeleteProductUseCase {
-        return DeleteProductUseCaseImpl(extraProductIngredientGateway, productGateway)
+        return DeleteProductUseCaseImpl(
+            deleteProductGateway,
+            deleteExtraProductIngredientGateway,
+            findExtraIngredientsByProductGateway,
+            findProductByIdGateway
+        )
     }
 }

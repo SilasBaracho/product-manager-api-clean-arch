@@ -4,17 +4,20 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import sb.pma.core.domain.extraProductIngredient.useCase.FindExtraIngredientsByProductUseCase
 import sb.pma.core.useCase.extraProductIngredient.findByIdProduct.FindExtraIngredientsByProductUseCaseImpl
-import sb.pma.infrastructure.resources.extraProductIngredient.gateway.ExtraProductIngredientDatabaseGateway
-import sb.pma.infrastructure.resources.product.gateway.ProductDatabaseGateway
+import sb.pma.infrastructure.resources.extraProductIngredient.gateway.FindExtraProductIngredientsGatewayImpl
+import sb.pma.infrastructure.resources.product.gateway.FindProductByIdGatewayImpl
 
 @Configuration
 class FindExtraIngredientsByProductConfig {
 
     @Bean
     fun findExtraIngredientsByProductUseCase(
-        extraProductIngredientGateway: ExtraProductIngredientDatabaseGateway,
-        productGateway: ProductDatabaseGateway
+        findProductByIdGateway: FindProductByIdGatewayImpl,
+        findExtraIngredientsByProductGateway: FindExtraProductIngredientsGatewayImpl
     ): FindExtraIngredientsByProductUseCase {
-        return FindExtraIngredientsByProductUseCaseImpl(extraProductIngredientGateway, productGateway)
+        return FindExtraIngredientsByProductUseCaseImpl(
+            findProductByIdGateway,
+            findExtraIngredientsByProductGateway
+        )
     }
 }

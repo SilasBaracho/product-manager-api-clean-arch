@@ -4,17 +4,23 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import sb.pma.core.domain.extraProductIngredient.useCase.CreateExtraProductIngredientsUseCase
 import sb.pma.core.useCase.extraProductIngredient.create.CreateExtraProductIngredientsUseCaseImpl
-import sb.pma.infrastructure.resources.extraProductIngredient.gateway.ExtraProductIngredientDatabaseGateway
-import sb.pma.infrastructure.resources.product.gateway.ProductDatabaseGateway
+import sb.pma.infrastructure.resources.extraProductIngredient.gateway.CreateProductIngredientsGatewayImpl
+import sb.pma.infrastructure.resources.extraProductIngredient.gateway.SaveExtraProductIngredientGatewayImpl
+import sb.pma.infrastructure.resources.product.gateway.FindProductByIdGatewayImpl
 
 @Configuration
 class CreateExtraProductIngredientsConfig {
 
     @Bean
     fun createExtraProductIngredientsUseCase(
-        extraProductIngredientGateway: ExtraProductIngredientDatabaseGateway,
-        productGateway: ProductDatabaseGateway
+        createProductIngredientGateway: CreateProductIngredientsGatewayImpl,
+        findProductByIdGateway: FindProductByIdGatewayImpl,
+        saveExtraProductIngredientGateway: SaveExtraProductIngredientGatewayImpl
     ): CreateExtraProductIngredientsUseCase {
-        return CreateExtraProductIngredientsUseCaseImpl(extraProductIngredientGateway, productGateway)
+        return CreateExtraProductIngredientsUseCaseImpl(
+            createProductIngredientGateway,
+            findProductByIdGateway,
+            saveExtraProductIngredientGateway
+        )
     }
 }
