@@ -24,4 +24,18 @@ class ResourceExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(exception)
     }
 
+    @ExceptionHandler(IllegalBusinessException::class)
+    fun notFoundException(
+        e: IllegalBusinessException,
+        request: HttpServletRequest
+    ): ResponseEntity<StandardError<String>> {
+        val exception = StandardError(
+            status = HttpStatus.BAD_REQUEST.value(),
+            error = HttpStatus.BAD_REQUEST.name,
+            path = request.servletPath,
+            message = e.message!!,
+        )
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(exception)
+    }
+
 }

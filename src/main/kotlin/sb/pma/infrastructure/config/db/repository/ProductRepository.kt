@@ -10,4 +10,5 @@ import java.util.UUID
 interface ProductRepository: JpaRepository<ProductSchema, UUID> {
     fun findByIdProductAndIdPartner(idProduct: UUID, idPartner: UUID): Optional<ProductSchema>
     fun findAllByIdPartner(idPartner: UUID): MutableList<ProductSchema>
+    fun findByNameAndActiveTrue(name: String): Optional<ProductSchema>
 }

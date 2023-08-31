@@ -32,9 +32,12 @@ class ProductController(
         return createProductUseCase.invoke(payload)
     }
 
-    @DeleteMapping("/{id}")
-    fun delete(@PathVariable("id") idProduct: UUID){
-        val payload = DeleteProductInput(idProduct)
+    @DeleteMapping("/{id_product}/partner/{id_partner}")
+    fun delete(
+        @PathVariable("id_product") idProduct: UUID,
+        @PathVariable("id_partner") idPartner: UUID
+    ){
+        val payload = DeleteProductInput(idPartner, idProduct)
         deleteProductUseCase.invoke(payload)
     }
 

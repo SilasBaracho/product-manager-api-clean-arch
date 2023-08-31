@@ -41,7 +41,6 @@ class ExtraProductIngredientController(
 
     @DeleteMapping("/{id_product}")
     fun delete(@PathVariable("id_product") idProduct: UUID){
-        val payload = DeleteProductInput(idProduct)
         deleteExtraIngredientsByProductUseCase.invoke(DeleteExtraIngredientsByProductInput(idProduct))
     }
 }
